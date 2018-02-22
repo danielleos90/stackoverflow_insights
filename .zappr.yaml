@@ -1,4 +1,4 @@
 approvals:
   # PR needs at least 2 approvals
-  minimum: 2
+  minimum: 4
   # approval = comment that matches this regex
