@@ -2,11 +2,3 @@ approvals:
   # PR needs at least 2 approvals
   minimum: 2
   # approval = comment that matches this regex
-commit:
-  message:
-    # note that there are no default patterns for commit messages
-    patterns:
-      - "^#[0-9]+" # has to begin with hash # and at least one number
-autobranch:
-  pattern: {number}-{title}
-  length: 60
