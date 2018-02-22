@@ -7,3 +7,6 @@ commit:
     # note that there are no default patterns for commit messages
     patterns:
       - "^#[0-9]+" # has to begin with hash # and at least one number
+autobranch:
+  pattern: {number}-{title}
+  length: 60
