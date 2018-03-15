@@ -19,4 +19,6 @@ sum_formal_education <- summarise(by_formal_education, count=n())
 
 View(by_formal_education)
 
+
+
 View(sum_formal_education)
