@@ -13,3 +13,4 @@ Project notes for weekly sessions on Thursday available [here](https://paul-kell
 
 Anything greater than story point 5, we should break down into a smaller story.
 
+some rubbish at the end
