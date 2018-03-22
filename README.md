@@ -13,3 +13,5 @@ Project notes for weekly sessions on Thursday available [here](https://paul-kell
 
 Anything greater than story point 5, we should break down into a smaller story.
 
+Our goal is to reproduce similar features detailed in the Stack Overflow Insights for 2018 
+[Stack Overflow Insights](https://insights.stackoverflow.com/survey/2018)
