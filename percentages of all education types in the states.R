@@ -1,7 +1,7 @@
 library(dplyr)
 
 
-survey_results_public <- read.csv("C:/Users/Vinesh/Dropbox/DIT/Higher Diploma/Year 2/Group Project/survey_results_public.csv")
+survey_results_public <- read.csv("dataset/survey_results_public.csv")
 
 View(survey_results_public)
 
