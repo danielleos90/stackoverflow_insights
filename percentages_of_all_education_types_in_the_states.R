@@ -1,0 +1,28 @@
+library(dplyr)
+
+
+survey_results_public <- read.csv("dataset/survey_results_public.csv")
+
+View(survey_results_public)
+
+
+survey_results_public_states <- subset(survey_results_public, Country=="United States")
+
+View(survey_results_public_states)
+
+survey_results_states <- select(survey_results_public_states, Country, FormalEducation)
+
+head(survey_results_states)
+
+by_formal_education <- group_by(survey_results_states, Country, FormalEducation)
+
+sum_formal_education <- summarise(by_formal_education, count=n())
+
+View(by_formal_education)
+
+
+View(sum_formal_education)
+
+sum_formal_education$Percentage <- sum_formal_education$count / sum(sum_formal_education$count)
+
+View(sum_formal_education)
