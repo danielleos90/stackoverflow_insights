@@ -14,7 +14,7 @@ library(rworldmap)
 
 
 results <- read_csv("C:/Users/tonyn/Downloads/survey_results_public.csv")
-
+#update
 View(results)
 
 sub <- data.frame(results$Country, results$FormalEducation)
