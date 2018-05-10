@@ -16,7 +16,7 @@ results <- read_csv("survey_results_public.csv")
 View(results)
 
 sub <- data.frame(results$Country, results$FormalEducation)
-names(sub) <- c("Country", "Foraml Education")
+names(sub) <- c("Country", "Formal Education")
 View(results)
 
 #country <- c("germany", "germany", "france", "ireland", "spain")
