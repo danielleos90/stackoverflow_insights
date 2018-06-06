@@ -1,3 +1,5 @@
+source("D:/Users/454594/Documents/GitHub/stackoverflow_insights/map.R")
+
 # User interface ----
 ui <- fluidPage(
   titlePanel("Stackoverflow Insights"),
