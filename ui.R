@@ -4,22 +4,32 @@ source("D:/Users/454594/Documents/GitHub/stackoverflow_insights/map.R")
 ui <- fluidPage(
   titlePanel("Stackoverflow Insights"),
   
-  sidebarLayout(sidebarPanel(
-    helpText("Developer Profile")),
+  sidebarLayout(
+    sidebarPanel(
+        tags$ul(
+          tags$li(tags$a(href="#map1", "Geography")), 
+          tags$li(tags$a(href="#map2", "Developer Roles")), 
+          tags$li(tags$a(href="#map3", "Experience"))
+        )
+      ),
     mainPanel(
-        plotOutput("map"),
-        plotOutput("map2")
+        plotOutput("map1"),
+        plotOutput("map2"),
+        plotOutput("map3")
       )
     )
   )
 
 # Server logic ----
 server <- function(input, output) {
-  output$map <- renderPlot({
+  output$map1 <- renderPlot({
     percent_map(counties$white, "darkgreen", "% White")
   })
   output$map2 <- renderPlot({
     percent_map(counties$white, "blue", "% White")
+  })
+  output$map3 <- renderPlot({
+    percent_map(counties$white, "red", "% White")
   })
   
 }
