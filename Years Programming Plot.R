@@ -7,7 +7,7 @@ library(ggplot2)
 fileToLoad <- file.choose(new = TRUE)
 
 
-# read in the CSV containing  football data and store it in a variable 
+
 surveyResultsPublic <- read.csv(fileToLoad, stringsAsFactors = FALSE)
 
 expAllRespondents <- subset.data.frame(surveyResultsPublic, select = c("YearsProgram"))
