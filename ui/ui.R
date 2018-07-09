@@ -1,9 +1,9 @@
-source("D:/Users/454594/Documents/GitHub/stackoverflow_insights/map.R")
+# source("D:/Users/454594/Documents/GitHub/stackoverflow_insights/map.R")
+source("/Users/paulkelly/Dropbox/lecturing/GroupProject/stackoverflow_insights")
 
 # User interface ----
 ui <- fluidPage(
   titlePanel("Stackoverflow Insights"),
-  
   sidebarLayout(
     sidebarPanel(
         tags$ul(
