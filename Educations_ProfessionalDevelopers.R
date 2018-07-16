@@ -1,0 +1,33 @@
+library(readr)
+library(ggplot2)
+library(stringr)
+library(dplyr)
+library(plyr)
+library(tidyr)
+
+# select the file from the file chooser
+fileToLoad <- file.choose(new = TRUE)
+
+
+
+surveyResultsPublic <- read.csv(fileToLoad, stringsAsFactors = FALSE)
+surveyResultsPublic <- read.csv(fileToLoad, stringsAsFactors = FALSE, strip.white = TRUE)
+
+educationSubset <- subset(surveyResultsPublic, Professional == "Professional developer")
+EducationProfessional <- subset.data.frame(educationSubset, select = c("FormalEducation"))
+EducationProfessionalNew<- EducationProfessional %>% group_by(FormalEducation) %>%  tally() 
+
+#Education All respondants plot
+ggplot(EducationProfessionalNew, aes(x=as.factor(FormalEducation), y=n))+ 
+  geom_point(aes(y = (n)/sum(n)),size=3,color="orange")+
+  scale_y_continuous(labels=scales::percent) + 
+  geom_segment(aes(x=FormalEducation, 
+                   xend=FormalEducation,
+                   y=0, 
+                   yend=(n)/sum(n)), color = "Orange")+
+  theme(axis.text.x = element_text(angle=45, vjust=0.6))+
+  labs(title="Educational Attainment", 
+       subtitle="Professional Developers",
+       caption="source: stackoverflow")+
+  theme_light()+ xlab("Educational Attainment") + ylab("Percentage")+
+  coord_flip()
