@@ -15,7 +15,6 @@ library(plotly)
 
 
 results <- read_csv("C:/Users/tonyn/Downloads/survey_results_public.csv")
-#View(results)
 #importing country codes Paul uploaded to github
 country_codes<- read_csv("C:/Users/tonyn/Downloads/countries.csv")
 #cleaning up data
@@ -24,10 +23,8 @@ country_codes <- country_codes[c(3,1,2)]
 colnames(country_codes) <- c("Country", "long", "lat") 
 #update
 
-#View(n)
 results_pruned <- results[c(1:7)]
-#View(results_pruned)
-#head(results_pruned)
+
 #There are three different maps on the  stackoverflow website; 
 #1. survey respondents - subset on country and sum of respondants
 #2. monthly stack overflow visits -
@@ -79,7 +76,6 @@ pro_count <- count(respondents, "Country")
 #merge pro with the clean county code data using the plyr package. very clean
 pro_merged <- merge(pro_count, country_codes, by = "Country")
 pro_merged <- na.omit(pro_merged)
-#View(pro_merged)
 
 
 pro_merged$percentage <- (pro_merged$freq/sum(pro_merged$freq))*100
