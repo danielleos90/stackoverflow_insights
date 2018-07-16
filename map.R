@@ -39,7 +39,6 @@ respondents_count <- count(respondents, "Country")
 #merge respondents_count with the clean county code data using the plyr package. very clean
 respondents_merged <- merge(respondents_count, country_codes, by = "Country")
 respondents_merged <- na.omit(respondents_merged)
-View(respondents_merged)
 #respondents_merged <- subset(respondents_merged, freq > 5)
 
 # Libraries
