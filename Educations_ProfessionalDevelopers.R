@@ -30,4 +30,8 @@ ggplot(EducationProfessionalNew, aes(x=as.factor(FormalEducation), y=n))+
        subtitle="Professional Developers",
        caption="source: stackoverflow")+
   theme_light()+ xlab("Educational Attainment") + ylab("Percentage")+
-  coord_flip()
+  coord_flip()+scale_x_discrete(breaks=c("Some college/university study without earning a bachelor's degree","Secondary school","Professional degree", "Primary/elementary school", "Master's degree", "I prefer not to answer", "I never completed any formal education", "Doctoral degree", "Bachelor's degree"),
+                               labels=c("college without earning degree","Secondary School","Professional Degree", "Primary/Elementary School", "Masters Degree", "Prefer not to answer", "No formal education", "Doctoral Degree", "Bachelors Degree"))
+
+
+
