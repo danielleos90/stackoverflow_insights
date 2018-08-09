@@ -4,31 +4,38 @@ library(dplyr)
 library(tidyr)
 
 ui <- fluidPage(
+  theme = "bootswatch-cerulean.css",
   navbarPage(title = "Stackoverflow Insights"),
   sidebarLayout(
     sidebarPanel(
       tags$ul(
-        tags$li("Developer Profile"), 
-        tags$li("Technology"), 
-        tags$li("Work"),
-        tags$li("Community"),
-        tags$li("Methodology")
+        tags$li(a("Overview", href="#overview")), 
+        tags$li(a("Developer Profile", href="#developer_profile")), 
+        tags$li(a("Technology", href="#technology")), 
+        tags$li(a("Work", href="#work")), 
+        tags$li(a("Community", href="#community")), 
+        tags$li(a("Methodology", href="#methodology")), 
       )
     ),
     mainPanel(
-      fluidRow(h4("Overview")),
+      fluidRow(h4(id="overview","Overview")),
       fluidRow(h5("This year, over 100,000 developers told us how they learn, build their careers, which tools they’re using, and what they want in a job.")),
       fluidRow(
         plotOutput("student_occurences_plot"),
         plotOutput("prof_occurences_plot")    
-      ))
+      )),
+      fluidRow(h4(id="developer_profile","Developer Profile")),
+      fluidRow(h4(id="technology","Technology")),
+      fluidRow(h4(id="work","Work")),
+      fluidRow(h4(id="community","Community")),
+      fluidRow(h4(id="methodology","Methodology"))
   )
 )
 
 
 
 server <- function(input, output){
-  surveyResultsPublic <- read.csv("/Users/paukelly/Dropbox/lecturing/GroupProject/stackoverflow_insights/datasets/survey_results_public.csv")
+  surveyResultsPublic <- read.csv("/Users/paulkelly/Dropbox/lecturing/GroupProject/stackoverflow_insights/datasets/survey_results_public.csv")
   
   
   
