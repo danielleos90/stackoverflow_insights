@@ -1,5 +1,4 @@
-# source("D:/Users/454594/Documents/GitHub/stackoverflow_insights/map.R")
-source("/Users/paulkelly/Dropbox/lecturing/GroupProject/stackoverflow_insights")
+source("/Users/paukelly/Dropbox/lecturing/GroupProject/stackoverflow_insights/demographics-ethnicity-all.R")
 
 # User interface ----
 ui <- fluidPage(
