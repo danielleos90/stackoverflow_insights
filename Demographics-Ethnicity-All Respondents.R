@@ -31,6 +31,8 @@ View(ethnicity_occurences)
 
 str(ethnicity_occurences)
 
+ethnicity_occurences$Var1 <- as.character(ethnicity_occurences$Var1)
+
 #combines East Asian Ethnicity
 ethnicity_occurences[1, ] <- ethnicity_occurences[1, ] + ethnicity_occurences[10, ]
 ethnicity_occurences[1, 1] <- "East Asian"
@@ -71,19 +73,17 @@ ethnicity_occurences [3, ] <- ethnicity_occurences[3, ] + ethnicity_occurences[1
 ethnicity_occurences[3, 1] <- "I don't Know"
 ethnicity_occurences <- ethnicity_occurences[-c(10),]
 
-ethnicity_occurences$Var1 <- as.character(ethnicity_occurences$Var1)
-
-ethnicity_occurences[3, 1] <- "I don't Know"
-
 ethnicity_occurences$Percentage <- ethnicity_occurences$Freq / sum(ethnicity_occurences$Freq) * 100
 
 ethnicity_occurences$Percentage <- round(ethnicity_occurences$Percentage, digits = 2)
 
 plot <- ggplot(ethnicity_occurences, aes(Var1, Percentage))
 plot + geom_bar(stat="identity", width = 0.5, fill="Orange") +
+  geom_text(aes(label = Percentage, y = Percentage), vjust = 0, hjust = 0.5)+
   labs(title="Ethnicity", 
        subtitle="All Respondents", 
        caption="source: stackoverflow") +
   theme(axis.text.x = element_text(angle=65, vjust=0.6))+
   theme_light()+
   coord_flip()
+  
