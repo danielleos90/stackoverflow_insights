@@ -89,7 +89,7 @@ server <- function(input, output){
   
   occurences$Percentage <- occurences$Freq / sum(occurences$Freq) * 100
   
-  output$occurences_plot<renderPlot({
+  output$occurences_plot<-renderPlot({
     ggplot(occurences, aes(x= Var1, y= Percentage))+ 
       geom_point(size=3, color = "Orange")+ 
       geom_segment(aes(x=Var1, 
