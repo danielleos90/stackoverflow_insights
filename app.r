@@ -14,7 +14,7 @@ ui <- fluidPage(
         tags$li(a("Technology", href="#technology")), 
         tags$li(a("Work", href="#work")), 
         tags$li(a("Community", href="#community")), 
-        tags$li(a("Methodology", href="#methodology")), 
+        tags$li(a("Methodology", href="#methodology"))
       )
     ),
     mainPanel(
@@ -23,12 +23,13 @@ ui <- fluidPage(
       fluidRow(
         plotOutput("student_occurences_plot"),
         plotOutput("prof_occurences_plot")    
-      )),
+      ),
       fluidRow(h4(id="developer_profile","Developer Profile")),
       fluidRow(h4(id="technology","Technology")),
       fluidRow(h4(id="work","Work")),
       fluidRow(h4(id="community","Community")),
       fluidRow(h4(id="methodology","Methodology"))
+    )
   )
 )
 
