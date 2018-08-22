@@ -40,7 +40,8 @@ ui <- fluidPage(
 
 
 server <- function(input, output){
-  surveyResultsPublic <- read.csv("C:/Users/amonk/Downloads/dataset.csv")
+  surveyResultsPublic <- read_csv("/Users/paulkelly/Dropbox/lecturing/GroupProject/stackoverflow_insights/datasets/survey_results_public.csv")
+
   
   
  # install.packages("ggmap")
@@ -52,16 +53,15 @@ server <- function(input, output){
   
   
   
-  results <- read_csv("C:/Users/amonk/Downloads/dataset.csv")
   #importing country codes Paul uploaded to github
-  country_codes<- read_csv("C:/Users/amonk/Downloads/countries.csv")
+  country_codes<- read_csv("/Users/paulkelly/Dropbox/lecturing/GroupProject/stackoverflow_insights/datasets/countries.csv")
   #cleaning up data
   country_codes <- country_codes[c(-1)]
   country_codes <- country_codes[c(3,1,2)]
   colnames(country_codes) <- c("Country", "long", "lat") 
   #update
   
-  results_pruned <- results[c(1:7)]
+  results_pruned <- surveyResultsPublic[c(1:7)]
   
   #There are three different maps on the  stackoverflow website; 
   #1. survey respondents - subset on country and sum of respondants
