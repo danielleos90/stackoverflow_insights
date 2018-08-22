@@ -90,17 +90,10 @@ server <- function(input, output){
   
   # Get the world polygon and extract U
   
-  world <- map_data("world") # we already did this, but we can do it again
-  gg1<-ggplot(respondents_merged, aes()) + geom_polygon(data = world, aes(x=long, y = lat, group = group), fill = "grey", color="lightgrey")+xlab("")+ylab("") + 
-    coord_fixed(1.3)
-  
-  
-  
-  p <- gg1 + 
-    geom_point(data = respondents_merged, aes(x = lat, y = long), color = "blue", size = respondents_merged$freq/800, alpha = 0.4)+xlab("")+ylab("")
-  
-  n <- ggplotly(p)
-  n
+  world <- map_data("world")
+  output$respondents_merged<-renderPlot({ggplotly(ggplot(respondents_merged, aes()) + geom_polygon(data = world, aes(x=long, y = lat, group = group), fill = "grey", color="lightgrey")+xlab("")+ylab("") + 
+                  coord_fixed(1.3) + geom_point(data = respondents_merged, aes(x = lat, y = long), color = "blue", size = respondents_merged$freq/800, alpha = 0.4)+xlab("")+ylab(""))
+  })
   
   
   #3. professional developers - subset on developer column for professional developers and sum by country
