@@ -25,8 +25,10 @@ ui <- fluidPage(
       fluidRow(h4(id="overview","Overview")),
       fluidRow(h5("This year, over 100,000 developers told us how they learn, build their careers, which tools they’re using, and what they want in a job.")),
       fluidRow(
-        plotOutput("student_occurences_plot"),
-        plotOutput("prof_occurences_plot")    
+        #plotOutput("student_occurences_plot"),
+        #plotOutput("prof_occurences_plot"),
+        plotOutput("map_plot"),
+        plotOutput("respondents_merged")
       ),
       fluidRow(h4(id="developer_profile","Developer Profile")),
       fluidRow(h4(id="technology","Technology")),
@@ -40,12 +42,12 @@ ui <- fluidPage(
 
 
 server <- function(input, output){
-  surveyResultsPublic <- read_csv("/Users/paulkelly/Dropbox/lecturing/GroupProject/stackoverflow_insights/datasets/survey_results_public.csv")
-
+  surveyResultsPublic <- read_csv("C:/Users/amonk/Downloads/dataset.csv")
   
   
- # install.packages("ggmap")
-#  install.packages("readr")
+  
+  # install.packages("ggmap")
+  #  install.packages("readr")
   #install.packages("tidyr")
   #install.packages("plotly")
   
@@ -54,7 +56,7 @@ server <- function(input, output){
   
   
   #importing country codes Paul uploaded to github
-  country_codes<- read_csv("/Users/paulkelly/Dropbox/lecturing/GroupProject/stackoverflow_insights/datasets/countries.csv")
+  country_codes<- read_csv("C:/Users/amonk/Downloads/countries.csv")
   #cleaning up data
   country_codes <- country_codes[c(-1)]
   country_codes <- country_codes[c(3,1,2)]
@@ -92,7 +94,7 @@ server <- function(input, output){
   
   world <- map_data("world")
   output$respondents_merged<-renderPlot({ggplotly(ggplot(respondents_merged, aes()) + geom_polygon(data = world, aes(x=long, y = lat, group = group), fill = "grey", color="lightgrey")+xlab("")+ylab("") + 
-                  coord_fixed(1.3) + geom_point(data = respondents_merged, aes(x = lat, y = long), color = "blue", size = respondents_merged$freq/800, alpha = 0.4)+xlab("")+ylab(""))
+                                                    coord_fixed(1.3) + geom_point(data = respondents_merged, aes(x = lat, y = long), color = "blue", size = respondents_merged$freq/800, alpha = 0.4)+xlab("")+ylab(""))
   })
   
   
@@ -124,7 +126,9 @@ server <- function(input, output){
   p3 <- gg3 + 
     geom_point(data = pro_merged, aes(x = lat, y = long), color = "blue", size = pro_merged$freq/800, alpha = 0.4)+xlab("")+ylab("")
   
-  n3 <- ggplotly(p3)
-  n3
+  output$map_plot<-renderPlot({
+    ggplotly(p3)
+  })
+  
 }
 shinyApp(ui = ui, server = server)
