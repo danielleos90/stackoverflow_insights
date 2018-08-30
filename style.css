@@ -1,0 +1,10 @@
+ol {list-style-type: upper-roman;
+	list-style-position: inside;
+	}
+
+head{color:blue;}
+
+h4 {color: blue;
+font-weight:200}
+h3 {color: blue;}
+tabPanel {color: blue;}
